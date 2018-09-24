@@ -1,0 +1,127 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        /*li {display:inline;font-family:"Times New Roman", Times, serif;
+        font-size: 60px;}*/
+        /*button {display:inline;}
+        [name=check_box_list] {font-family:"Times New Roman", Times, serif;
+                                font-size: 60px;}*/
+        #fz {font-size: 20px;}
+    </style>
+    <script type="text/javascript">
+
+	function test_ck( n ) {
+	for ( var i = 0; i < n.check_box_list.length; ++i ) {
+	if ( n.check_box_list[i].checked == true ) return true;
+	}
+	alert( '没有任何选项被选中' );
+	return false;
+	}
+
+
+
+          function display_alert()
+            {
+              alert("I am an alert box!!")
+            }
+	</script>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+</head>
+<body>
+
+    <!-- <form action="{% url 'career_find:result' 1%}" onsubmit='return test_ck(this)' method="post">
+        
+    	{% csrf_token %}
+        请选择你的科目：
+        <input type="checkbox" value="化学" name="check_box_list"/>化学
+
+    	<input type="checkbox" value="历史" name="check_box_list"/>历史
+
+    	<input type="checkbox" value="地理" name="check_box_list"/>地理
+
+    	<input type="checkbox" value="思想政治" name="check_box_list"/>思想政治
+
+    	<input type="checkbox" value="物理" name="check_box_list"/>物理
+
+    	<input type="checkbox" value="生物" name="check_box_list"/>生物 -->
+
+        <!-- <input type="submit" value="提交"> -->
+
+        <!-- {% buttons %}
+        <button name="submit" class="btn btn-primary">
+            搜索
+        </button>
+        {% endbuttons %}
+
+    </form> -->
+    <!-- <input type="button"  onclick='display_alert()'/> -->
+    <div class="form-group">
+        <div class="checkbox">
+          
+            <form action="{% url 'career_find:result' 1 %}"  onsubmit="return test_ck(this)"  method="post">
+
+              <div style="width:1000px;">
+                <div style="width:725px;float:left;">
+                  {% csrf_token %}
+                  <!-- <div class='jumbotron'> -->
+                    <span id='fz' style='font-size: 30px;padding-top:29px;' class="label label-default">请选择你的科目</span>
+                  <!-- </div> -->
+
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox1" type="checkbox" value="化学" name="check_box_list"/><span id='fz' >化学</span>
+                  </label>
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox2" type="checkbox" value="历史" name="check_box_list"/><span id='fz'>历史</span>
+                  </label>
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox3" type="checkbox" value="地理" name="check_box_list"/><span id='fz'>地理</span>
+                  </label>
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox4" type="checkbox" value="思想政治" name="check_box_list"/><span id='fz'>思想政治</span>
+                  </label>
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox5" type="checkbox" value="物理" name="check_box_list"/><span id='fz'>物理</span>
+                  </label>
+                  <label class="checkbox-inline" style='padding-top:15px;'>
+                    <input id="inlineCheckbox6" type="checkbox" value="生物" name="check_box_list"/><span id='fz'>生物</span>
+                  </label>
+                </div>
+                <div style="width: 200px;float:left;">
+                  {% buttons %}
+                  <button name="submit"  class="btn btn-primary" style='margin-top:10px;'>
+                      <span>从这里开始</span>
+                  </button>
+                  {% endbuttons %}
+                </div>
+
+                <div style='clear:both;'><hr></div>
+
+              </div>
+                <!-- <button name="submit" class="btn btn-primary">
+                    搜索
+                </button> -->
+            </form>
+              <!-- <input type="button" value="提交" onclick='display_alert()'/> -->
+        
+        </div>
+      </div>
+    <div class='jumbotron'>
+      <div class="container">
+    <h1>找到为你量身打造的专业与学校！</h1>
+    <p>告诉我们你擅长的科目，我们将为你找到合适你的专业。</p>
+    <p><a class="btn btn-primary btn-lg" role="button" href='http://www.zhcrc.com'>
+      想要了解更多关于你的职业生涯？</a>
+    </p>
+  </div>
+    </div>
+
+  <div style="clear:both;text-align:center;"><hr>Copyright © 生涯大数据课题组  All Rights Reserved.</div>
+</body>
+</html>
