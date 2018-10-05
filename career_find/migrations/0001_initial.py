@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('password', models.CharField(max_length=128)),
-                ('last_login', models.DateTimeField()),
+                ('last_login', models.DateTimeField(null=True)),
                 ('is_superuser', models.IntegerField()),
                 ('username', models.CharField(max_length=30, unique=True)),
                 ('first_name', models.CharField(max_length=30)),

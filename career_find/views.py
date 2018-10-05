@@ -5,10 +5,12 @@ from .models import MainTable
 from itertools import chain
 from django.core.paginator import Paginator
 from django.views.decorators.cache import cache_page
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # coding:utf-8
 from django.http import HttpResponse
 from .forms import PageHop
+
 
 
 def get_pages(totalpage=1,current_page=1):
@@ -37,7 +39,7 @@ def get_pages(totalpage=1,current_page=1):
         return list(range(start_page,end_page+1))
 
 
-
+@login_required
 def index(request):
 #    if request.method != 'POST':
     return render(request, 'career_find/index.html')
@@ -53,6 +55,7 @@ def index(request):
 ##    context = {'form': form}
 
 #@cache_page(60 * 15)
+@login_required
 def result(request,page_num):
     form = PageHop()
     if request.method == 'POST':
@@ -108,6 +111,7 @@ def result(request,page_num):
 #    return render(request, 'career_find/index.html', context)
 
 #@cache_page(60 * 15)
+@login_required
 def page(request,check_box,page_num):
     form = PageHop()
     if request.method == 'POST':

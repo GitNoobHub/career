@@ -26,7 +26,7 @@
       var max_page = {{ contacts.paginator.num_pages }}
       function test_range( form ){
       if (form.跳页.value < 1 || form.跳页.value > max_page) {
-              alert("页数溢出!");
+              alert("请输入合理的页数!");
               form.跳页.focus();
               return false; }
       else if (isNaN(form.跳页.value)){
@@ -61,35 +61,39 @@
             <form action="{% url 'career_find:result' 1 %}"  onsubmit="return test_ck(this)"  method="post">
 
               <div style="width:1000px;">
-                <div style="width:765px;float:left;">
+                <div style="width:700px;float:left;">
                   {% csrf_token %}
                   <!-- <div class='jumbotron'> -->
-                    <span id='fz' style='font-size: 35px;padding-top:29px;' class="label label-default">请选择你的科目</span>
+                    <span id='fz' style='font-size: 50px;padding-top:29px;' class="label label-default">请选择你的科目</span>
                   <!-- </div> -->
+                  
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-20px;'>
+                      <input id="inlineCheckbox1" type="checkbox" value="化学" name="check_box_list"/><span id='fz' >化学</span>
+                    </label>
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-20px;'>
+                      <input id="inlineCheckbox2" type="checkbox" value="历史" name="check_box_list"/><span id='fz'>历史</span>
+                    </label>
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-20px;'>
+                      <input id="inlineCheckbox3" type="checkbox" value="地理" name="check_box_list"/><span id='fz'>地理</span>
+                    </label>
 
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox1" type="checkbox" value="化学" name="check_box_list"/><span id='fz' >化学</span>
-                  </label>
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox2" type="checkbox" value="历史" name="check_box_list"/><span id='fz'>历史</span>
-                  </label>
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox3" type="checkbox" value="地理" name="check_box_list"/><span id='fz'>地理</span>
-                  </label>
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox4" type="checkbox" value="思想政治" name="check_box_list"/><span id='fz'>思想政治</span>
-                  </label>
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox5" type="checkbox" value="物理" name="check_box_list"/><span id='fz'>物理</span>
-                  </label>
-                  <label class="checkbox-inline" style='padding-top:15px;'>
-                    <input id="inlineCheckbox6" type="checkbox" value="生物" name="check_box_list"/><span id='fz'>生物</span>
-                  </label>
+                    
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-10px;'>
+                      <input id="inlineCheckbox4" type="checkbox" value="思想政治" name="check_box_list"/><span id='fz'>政治</span>
+                    </label>
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-10px;'>
+                      <input id="inlineCheckbox5" type="checkbox" value="物理" name="check_box_list"/><span id='fz'>物理</span>
+                    </label>
+                    <label class="checkbox-inline" style='padding-top:0px;position:relative;top:-10px;'>
+                      <input id="inlineCheckbox6" type="checkbox" value="生物" name="check_box_list"/><span id='fz'>生物</span>
+                    
+                  
                 </div>
                 <div style="width: 200px;float:left;">
                   {% buttons %}
-                  <button name="submit"  class="btn btn-primary" style='margin-top:10px;'>
-                      <span>搜索</span>
+                  <button name="submit"  class="btn btn-primary" style='margin-top:10px;position:relative;left:-50px;'>
+                      <span>查询</span>
                   </button>
                   {% endbuttons %}
                 </div>
@@ -136,7 +140,7 @@
             <td>{{ result.专业类别 }}</td>
             <td>{{ result.专业 }}</td>
             <td>{{ result.科目要求 }}</td>
-            <td><a href={{ result.学校网站 }}>{{ result.学校网站 }}</a></td>
+            <td><a href={{ result.学校网站 }}  target = "_blank" >{{ result.学校网站 }}</a></td>
             <td>{{ result.coin }}</td>
           </tr>
       {% empty %}
